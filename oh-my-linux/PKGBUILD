@@ -1,0 +1,16 @@
+# Maintainer: Dictator Mei <dctxmei@gmail.com>
+pkgname=oh-my-linux
+pkgver=1.0
+pkgrel=1
+pkgdesc="Dictator's Arch Linux Desktop"
+arch=('any')
+depends=("alacritty-git"
+         "antigen-git"
+         "bibata-cursor-theme"
+         "flameshot-git"
+         "flat-remix-git"
+         "i3-gaps"
+         "i3lock"
+         "mpd"
+         "polybar"
+         "vimix-gtk-themes-git")
