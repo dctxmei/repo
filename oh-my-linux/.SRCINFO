@@ -1,0 +1,18 @@
+pkgbase = oh-my-linux
+	pkgdesc = Dictator's Arch Linux Desktop
+	pkgver = 1.0
+	pkgrel = 2
+	arch = any
+	depends = alacritty-git
+	depends = antigen-git
+	depends = bibata-cursor-theme
+	depends = flameshot
+	depends = flat-remix-git
+	depends = i3-gaps
+	depends = i3lock
+	depends = mpd
+	depends = polybar
+	depends = vimix-gtk-themes-git
+
+pkgname = oh-my-linux
+
