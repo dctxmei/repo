@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for UPDATE in $(ls -d */ | awk -F '/' '{print $1}'); do
+    test -e $UPDATE/.SRCINFO && exit 0
+    mv $UPDATE .$UPDATE
+    git clone https://aur.archlinux.org/$UPDATE.git || exit 1
+    if [[ $? -eq 1 ]]; then
+        mv .$UPDATE $UPDATE
+    else
+        rm -rf .$UPDATE
+        rm -rf $UPDATE/.git
+        rm -f $UPDATE/.SRCINFO
+    fi
+done
