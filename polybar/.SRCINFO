@@ -1,0 +1,36 @@
+pkgbase = polybar
+	pkgdesc = A fast and easy-to-use status bar
+	pkgver = 3.2.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/jaagr/polybar
+	install = polybar.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	makedepends = pkg-config
+	depends = cairo
+	depends = curl
+	depends = i3-wm
+	depends = jsoncpp
+	depends = libmpdclient
+	depends = libnl
+	depends = pulseaudio
+	depends = xcb-util-cursor
+	depends = xcb-util-image
+	depends = xcb-util-wm
+	depends = xcb-util-xrm
+	optdepends = alsa-lib: alsa module support
+	optdepends = siji-git: Font used in example config
+	optdepends = ttf-unifont: Font used in example config
+	optdepends = wireless_tools: network module support (legacy)
+	conflicts = polybar-git
+	source = polybar::git+https://github.com/jaagr/polybar.git#tag=3.2.0
+	md5sums = SKIP
+
+pkgname = polybar
+
