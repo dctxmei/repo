@@ -8,7 +8,7 @@ url="https://gitlab.com/dctxmei/devtools-dctxmei"
 license=('GPL')
 depends=('devtools')
 makedepends=("cmake" "git")
-source=("git+{$url}.git")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 build() {
