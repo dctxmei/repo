@@ -1,0 +1,23 @@
+pkgbase = powerpill
+	pkgdesc = Pacman wrapper for faster downloads.
+	pkgver = 2018.5
+	pkgrel = 1
+	url = https://xyne.archlinux.ca/projects/powerpill
+	arch = any
+	license = GPL
+	depends = aria2
+	depends = pm2ml>2012.12.12
+	depends = pyalpm
+	depends = python3
+	depends = python3-xcgf
+	depends = python3-xcpf
+	depends = reflector
+	optdepends = python3-threaded_servers: internal Pacserve support
+	optdepends = rsync: Rsync download support
+	backup = etc/powerpill/powerpill.json
+	source = https://xyne.archlinux.ca/projects/powerpill/src/powerpill-2018.5.tar.xz
+	md5sums = 9b5a5bc9b142eae25f89f00152790568
+	sha512sums = bbbae6da80bc9cf2efae8f15bf70c2b13ad511bb6575d3dd7ec21f085a4b95177968ad51a36899653cd87347e0d2b37d96656363e99513155dd36a2254934c10
+
+pkgname = powerpill
+
