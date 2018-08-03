@@ -7,6 +7,7 @@ for UPDATE in $(ls -d */ | awk -F '/' '{print $1}'); do
     if [[ $? -eq 1 ]]; then
         mv .$UPDATE $UPDATE
     else
+        test -e .$UPDATE/auto.sh && mv .$UPDATE/auto.sh $UPDATE
         rm -rf .$UPDATE
         rm -rf $UPDATE/.git
         rm -f $UPDATE/.SRCINFO
