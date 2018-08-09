@@ -1,0 +1,15 @@
+pkgbase = devtools-dctxmei
+	pkgdesc = Tools for Arch Linux Dictator Repository package maintainers
+	pkgver = 20180801
+	pkgrel = 1
+	url = https://gitlab.com/dctxmei/devtools-dctxmei
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = devtools
+	source = git+{https://gitlab.com/dctxmei/devtools-dctxmei}.git
+	sha512sums = SKIP
+
+pkgname = devtools-dctxmei
+
