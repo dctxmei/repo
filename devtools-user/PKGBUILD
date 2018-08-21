@@ -24,6 +24,6 @@ package() {
     make DESTDIR="${pkgdir}" install
     sed -e \
         's/\/usr\/share\/devtools\/pacman-\${repo}.conf/\/etc\/pacman.conf/' \
-        -e 's/\/usr\/share\/devtools\/makepkg-\${arch}.conf/\/etc\/makepkg.conf/'
+        -e 's/\/usr\/share\/devtools\/makepkg-\${arch}.conf/\/etc\/makepkg.conf/' \
         $pkgdir/usr/bin/user-x86_64-build -i
 }
