@@ -1,0 +1,13 @@
+pkgbase = binfmt-manager-git
+	pkgver = r9.ee2d0c7
+	pkgrel = 1
+	url = https://github.com/mikkeloscar/binfmt-manager.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = qemu-user-static
+	source = git://github.com/mikkeloscar/binfmt-manager.git
+	md5sums = SKIP
+
+pkgname = binfmt-manager-git
+

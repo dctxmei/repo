@@ -1,0 +1,28 @@
+# Maintainer: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
+
+_gitname=binfmt-manager
+
+pkgname=$_gitname-git
+pkgver=r9.ee2d0c7
+pkgrel=1
+pkgdesc="Register/unregister qemu-static executables with binfmt_misc"
+arch=('any')
+url="https://github.com/mikkeloscar/${_gitname}.git"
+license=('GPL')
+depends=('qemu-user-static')
+makedepends=('git')
+source=("git://github.com/mikkeloscar/${_gitname}.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "${srcdir}/${_gitname}"
+
+  make DESTDIR="$pkgdir" install
+}
+
+# vim:set ts=2 sw=2 et:
