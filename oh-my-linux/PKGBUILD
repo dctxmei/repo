@@ -1,8 +1,8 @@
-# Maintainer: Dictator Mei <dctxmei@gmail.com>
+# Maintainer: Dct Mei <dctxmei@gmail.com>
 pkgname=oh-my-linux
 pkgver=1.0
 pkgrel=2
-pkgdesc="Dictator's Arch Linux Desktop"
+pkgdesc="Mei's Arch Linux Desktop"
 arch=('any')
 depends=("alacritty-git"
          "antigen-git"

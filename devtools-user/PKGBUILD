@@ -1,10 +1,10 @@
-# Maintainer: Dictator Mei <dctxmei@gmail.com>
+# Maintainer: Dct Mei <dctxmei@gmail.com>
 pkgname=devtools-user
 pkgver=20180821
 pkgrel=1
-pkgdesc="Tools for Arch Linux Dictator Repository package maintainers"
+pkgdesc="Tools for Arch Linux Mei Repository package maintainers"
 arch=('x86_64')
-url="https://gitlab.com/dctxmei/devtools-user"
+url="https://github.com/dctxmei/devtools-user"
 license=('GPL')
 depends=('devtools')
 makedepends=("cmake" "git")

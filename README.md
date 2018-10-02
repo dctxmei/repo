@@ -1,4 +1,4 @@
-Arch Linux Dictator Repository
+Arch Linux Mei Repository
 ====
 
 ### Usage
@@ -7,14 +7,14 @@ Add repo
 
 ```
 [dctxmei]
-Server = https://repo.dct.party/$arch
+Server = https://repo.dctxmei.me/$arch
 ```
 to your /etc/pacman.conf .
 
 Add PGP Keys
 
 ```
-$ curl https://repo.dct.party/dctxmei.key | sudo pacman-key --add -
+$ curl https://repo.dctxmei.me/dctxmei.key | sudo pacman-key --add -
 $ sudo pacman-key --lsign-key dctxmei@gmail.com
 ```
 
