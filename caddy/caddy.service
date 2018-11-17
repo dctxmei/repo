@@ -4,8 +4,6 @@ Documentation=https://caddyserver.com/docs
 After=network.target
 
 [Service]
-User=http
-Group=http
 Environment=CADDYPATH=/var/lib/caddy
 EnvironmentFile=-/etc/caddy/envfile
 ExecStart=/usr/bin/caddy -log stdout -agree -conf /etc/caddy/caddy.conf -root /tmp
