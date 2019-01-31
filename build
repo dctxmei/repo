@@ -1,0 +1,41 @@
+#!/bin/bash
+
+rm -rf /tmp/repo
+cd /tmp
+git clone https://github.com/dctxmei/repo.git && cd repo
+for ALL in $(ls -d */ | awk -F '/' '{print $1}'); do
+    cd $ALL
+    if [[ $? -ne 0 ]]; then
+        (( I++ ))
+        FAIL=$ALL
+        echo $FAIL >> /tmp/repo/.GG
+        continue
+    fi
+    test -e auto.sh && bash auto.sh
+    user-x86_64-build -- -I /var/cache/pacman/pkg/git-*-x86_64.pkg.tar.xz
+    if [[ $? -ne 0 ]]; then
+        (( I++ ))
+        FAIL=$ALL
+        echo $FAIL >> /tmp/repo/.GG
+        GARBAGE=$(pwd)
+        cd ..
+        rm -rf $GARBAGE
+        continue
+    fi
+    mv *.pkg.tar.xz ..
+    GARBAGE=$(pwd)
+    cd ..
+    rm -rf $GARBAGE
+done
+
+echo -e "\e[01m\e[31m"
+if [[ $I -eq 0 ]]; then
+    echo "Update completed!"
+    echo "Done :-)"
+else
+    echo "Failed to update: $I"
+    echo -ne "\e[0m"
+    cat /tmp/repo/.GG
+    echo -ne "\e[31m"
+    echo "> /tmp/repo/.GG"
+fi
