@@ -7,15 +7,25 @@ Add repo
 
 ```
 [dctxmei]
-Server = https://repo.dctxmei.me/$arch
+Server = https://downloads.dctxmei.me/archlinux/$arch
 ```
+
 to your /etc/pacman.conf .
 
 Add PGP Keys
 
 ```
-$ curl https://repo.dctxmei.me/dctxmei.key | sudo pacman-key --add -
-$ sudo pacman-key --lsign-key dctxmei@gmail.com
+# pacman-key --recv-keys 50BF8B712DCAD7EA
+# pacman-key --finger 50BF8B712DCAD7EA
+# pacman-key --lsign-key 50BF8B712DCAD7EA
+```
+
+or
+
+```
+# curl -L downloads.dctxmei.me/public.key | pacman-key --add -
+# pacman-key --finger 50BF8B712DCAD7EA
+# pacman-key --lsign-key 50BF8B712DCAD7EA
 ```
 
 ### Idea
