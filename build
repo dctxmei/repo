@@ -47,13 +47,14 @@ DONE() {
 
 if [ $# -ge 1 ]; then
     if [[ $1 == "-o" || $1 == "--only" ]]; then
-        if [[ $(cd $2; echo $?) -eq 0 ]]; then
-            cd $2
-            user-x86_64-build -c
-        else
-            exit 1
+        if [[ -n $2 ]]; then
+            if [[ $(cd $2; echo $?) -eq 0 ]]; then
+                cd $2
+                user-x86_64-build -c
+            else
+                exit 1
+            fi
         fi
-        exit 0
     fi
     exit 0
 fi
