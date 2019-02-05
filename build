@@ -12,14 +12,14 @@ BUILD() {
         if [[ $? -ne 0 ]]; then
             (( I++ ))
             FAIL=$ALL
-            echo $FAIL >> /tmp/GrepoG
+            echo $FAIL >> $log
             continue
         fi
-        user-x86_64-build -c
+        $build
         if [[ $? -ne 0 ]]; then
             (( I++ ))
             FAIL=$ALL
-            echo $FAIL >> /tmp/GrepoG
+            echo $FAIL >> $log
             GARBAGE=$(pwd)
             cd ..
             rm -rf $GARBAGE
@@ -39,9 +39,9 @@ DONE() {
     else
         echo "Failed to build: $I"
         echo -ne "\e[0m"
-        cat src/repo/.GG
+        cat $log
         echo -ne "\e[31m"
-        echo "> src/repo/.GG"
+        echo "> $log"
     fi
 }
 
@@ -50,7 +50,7 @@ if [ $# -ge 1 ]; then
         if [[ -n $2 ]]; then
             if [[ $(cd $2; echo $?) -eq 0 ]]; then
                 cd $2
-                user-x86_64-build -c
+                $build
             else
                 exit 1
             fi
@@ -58,6 +58,9 @@ if [ $# -ge 1 ]; then
     fi
     exit 0
 fi
+
+log="/tmp/GrepoG"
+build="user-x86_64-build -c"
 
 INIT
 BUILD
