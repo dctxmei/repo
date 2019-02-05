@@ -32,3 +32,9 @@ or
 
 1. Do not compile packages owned by archlinuxcn.
 2. But if there is an error, then do it yourself.
+
+### Build
+
+1. 配置 dctxmei 源并安装 devtools-user
+2. 配置 `PACKAGER` 至 `$XDG_CONFIG_HOME/pacman/makepkg.conf` 或 `~/.makepkg.conf`
+3. 配置编译所需源至 /etc/pacman.conf
