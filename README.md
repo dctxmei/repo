@@ -36,5 +36,26 @@ or
 ### Build
 
 1. 配置 dctxmei 源并安装 devtools-user
+
+```
+# pacman -S devtools-user
+```
+
 2. 配置 `PACKAGER` 至 `$XDG_CONFIG_HOME/pacman/makepkg.conf` 或 `~/.makepkg.conf`
+
+```
+$ mkdir -p ~/.config/pacman
+$ echo "PACKAGER=\"Dct Mei <dctxmei@gmail.com>\" > ~/.config/pacman/makepkg.conf"
+```
+
 3. 配置编译所需源至 /etc/pacman.conf
+
+```
+# vim /etc/pacman.conf
+
+[dctxmei]
+Server = https://downloads.dctxmei.me/archlinux/$arch
+
+[archlinuxcn]
+Server = https://cdn.repo.archlinuxcn.org/$arch
+```

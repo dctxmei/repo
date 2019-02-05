@@ -1,9 +1,9 @@
 #!/bin/bash
 
 INIT() {
-    rm -rf src $log
-    mkdir src
-    cd src
+    rm -rf pkg $log
+    mkdir pkg
+    cd pkg
     git clone https://github.com/dctxmei/repo.git && cd repo
 }
 BUILD() {
@@ -25,7 +25,7 @@ BUILD() {
             rm -rf $GARBAGE
             continue
         fi
-        mv *.pkg.tar.xz ..
+        mv *.pkg.tar.xz ../..
         GARBAGE=$(pwd)
         cd ..
         rm -rf $GARBAGE
