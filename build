@@ -45,6 +45,9 @@ DONE() {
     fi
 }
 
+log="/tmp/GrepoG"
+build="user-x86_64-build -c"
+
 if [ $# -ge 1 ]; then
     if [[ $1 == "-o" || $1 == "--only" ]]; then
         if [[ -n $2 ]]; then
@@ -58,9 +61,6 @@ if [ $# -ge 1 ]; then
     fi
     exit 0
 fi
-
-log="/tmp/GrepoG"
-build="user-x86_64-build -c"
 
 INIT
 BUILD
