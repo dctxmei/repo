@@ -1,18 +1,19 @@
-Arch Linux Mei Repository
+Dct Mei's Arch Linux Personal Software Depot
 ====
+Hi! My name is Dct Mei. This is my Arch Linux software repository. It is only used to store some software that is not suitable for public software repositories. It mainly contains some configuration files and is currently maintained manually.
 
-### Usage
+## Usage
 
-Add repo
+### Add Repo
 
 ```
 [dctxmei]
-Server = https://downloads.dctxmei.me/archlinux/$arch
+Server = https://dctxmei.github.io/repo/$arch
 ```
 
 to your /etc/pacman.conf .
 
-Add PGP Keys
+### Add PGP Keys
 
 ```
 # pacman-key --recv-keys 50BF8B712DCAD7EA
@@ -23,39 +24,7 @@ Add PGP Keys
 or
 
 ```
-# curl -L downloads.dctxmei.me/public.key | pacman-key --add -
+# curl https://build.archlinuxcn.org/~dctxmei/public.key | pacman-key --add -
 # pacman-key --finger 50BF8B712DCAD7EA
 # pacman-key --lsign-key 50BF8B712DCAD7EA
-```
-
-### Idea
-
-1. Do not compile packages owned by archlinuxcn.
-2. But if there is an error, then do it yourself.
-
-### Build
-
-1. 配置 dctxmei 源并安装 devtools-user
-
-```
-# pacman -S devtools-user
-```
-
-2. 配置 `PACKAGER` 至 `$XDG_CONFIG_HOME/pacman/makepkg.conf` 或 `~/.makepkg.conf`
-
-```
-$ mkdir -p ~/.config/pacman
-$ echo "PACKAGER=\"Dct Mei <dctxmei@gmail.com>\" > ~/.config/pacman/makepkg.conf"
-```
-
-3. 配置编译所需源至 /etc/pacman.conf
-
-```
-# vim /etc/pacman.conf
-
-[dctxmei]
-Server = https://downloads.dctxmei.me/archlinux/$arch
-
-[archlinuxcn]
-Server = https://cdn.repo.archlinuxcn.org/$arch
 ```
