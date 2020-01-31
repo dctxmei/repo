@@ -7,7 +7,7 @@ pkgdesc="Set system services about TPROXY policy routing"
 arch=('any')
 depends=('iproute2' 'systemd')
 source=("tproxyrule.service")
-sha512sums=('4c3508ac271b23ea87aecc0293686a6cd1ea4bc94b6de7b46e3cb324bce14f9ee3ef9f52688567dd7372a419126c4a6c170bab7301f5962d84fa75684c9305a0')
+sha512sums=('25007b6be88a6fd1ed09f2f2a36a04858839ab595abff8add8e9c081e9b356e9770395395311f51d4f2ff3e879a8126a1de35f2913ed60e233386f2954a547d2')
 
 package() {
     install -Dm644 "$srcdir"/tproxyrule.service "$pkgdir"/usr/lib/systemd/system/tproxyrule.service
