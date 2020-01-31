@@ -4,7 +4,7 @@ Wants=network.target
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/ip rule add fwmark 1 table 100; /usr/bin/ip route add local 0.0.0.0/0 dev lo table 100
+ExecStart=/usr/bin/ip rule add fwmark 1 table 100\; /usr/bin/ip route add local 0.0.0.0/0 dev lo table 100
 Type=oneshot
 
 [Install]
