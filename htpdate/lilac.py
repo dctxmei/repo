@@ -12,8 +12,8 @@ def pre_build():
             "# But IF YOUR SYSTEM ARE USING SYSTEMD (Debian Jessie and newer use it!)," + '\n'
             "# the first line will be ignored. You can use '# systemctl disable htpdate'" + '\n'
             "# to disable htpdate on boot and '# systemctl enable htpdate' to reenable it." + '\n'
-            "# HTP_DAEMON=no" + '\n'
-            "# HTP_IFUP=no" + '\n'
+            '# HTP_DAEMON=no' + '\n'
+            '# HTP_IFUP=no' + '\n'
             '\n'
             "# If you have a HTTP proxy, uncomment the following line and change the" + '\n'
             "# values." + '\n'
@@ -31,14 +31,11 @@ def pre_build():
 
     aur_pre_build()
     run_cmd(['sh', '-c', 'sed \'/^$/d\' -i htpdate.service'])
-    security = False
     for line in edit_file('htpdate.service'):
         if line.startswith('Description='):
-            line = 'Description=HTTP based time synchronization tool'
-        elif line.startswith('Description='):
-            line = line + '\n' + 'Documentation=man:htpdate'
-        elif line.startswith('Documentation='):
-            line = line + '\n' + 'After=network.target nss-lookup.target'
+            line = ('Description=HTTP based time synchronization tool' + '\n'
+                    'Documentation=man:htpdate' + '\n'
+                    'After=network.target nss-lookup.target')
         elif line.endswith('[Service]'):
             line = '\n' + line
         elif line.startswith('PIDFile='):
@@ -46,10 +43,7 @@ def pre_build():
         elif line.startswith('ExecStart='):
             line = ('ExecStart=/usr/bin/htpdate $HTP_OPTIONS $HTP_PROXY'
                     ' '
-                    '-i /run/htpdate.pid $HTP_SERVERS')
-            security = True
-        elif security and line.startswith('ExecStart='):
-            line = (line + '\n'
+                    '-i /run/htpdate.pid $HTP_SERVERS' + '\n'
                     '# Security #' + '\n'
                     'InaccessibleDirectories='
                     '/boot /home /media /mnt /root /opt /srv' + '\n'
