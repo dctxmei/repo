@@ -72,7 +72,7 @@ def pre_build():
             line = (line + '\n' + '        '
                     '"htpdate.default"')
         elif line.startswith('md5sums='):
-            line = 'sha256sums=()'
+            line = 'sha256sums=('
         elif line.startswith('package()'):
             line = (line + '\n' + '  '
                     'install -D -m 644 htpdate.default'
