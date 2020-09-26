@@ -23,8 +23,7 @@ htpdate_default = ("# This file is used to configure htpdate daemon. Most users 
         '\n'
         "# The general options can be viewed with '$ htpdate -h'. However, you can" + '\n'
         "# keep the current options, that works fine." + '\n'
-        'HTP_OPTIONS="-D -s"'
-        )
+        'HTP_OPTIONS="-D -s"')
 
 from lilaclib import *
 
@@ -42,11 +41,11 @@ def pre_build():
             line = '\n' + line
         elif line.startswith('ExecStart='):
             line = 'EnvironmentFile=/etc/default/htpdate' + '\n' + line
-        elif line.startswith('ExecStart='):
+        if line.startswith('ExecStart='):
             line = ('ExecStart=/usr/bin/htpdate $HTP_OPTIONS $HTP_PROXY'
                     ' '
                     '-i /run/htpdate.pid $HTP_SERVERS')
-        elif line.startswith('ExecStart='):
+        if line.startswith('ExecStart='):
             line = (line + '\n'
                     '# Security #' + '\n'
                     'InaccessibleDirectories='
