@@ -69,7 +69,8 @@ def pre_build():
         if line.startswith('pkgdesc='):
             line = 'pkgdesc="HTTP based time synchronization tool"'
         elif line.startswith('source='):
-            line = line + '\n' + 'htpdate.default'
+            line = (line + '\n' + '        '
+                    '"htpdate.default"')
         elif line.startswith('md5sums='):
             line = 'sha256sums=()'
         elif line.startswith('package()'):
