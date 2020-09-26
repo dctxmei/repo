@@ -2,32 +2,32 @@
 
 from lilaclib import *
 
-def pre_build():
+htpdate_default = ("# This file is used to configure htpdate daemon. Most users needn't change" + '\n'
+        "# anything here." + '\n'
+        '\n'
+        "# htpdate will run on system boot as daemon and at every network restart" + '\n'
+        "# (IF UP). However you can disable each one uncommenting the following lines." + '\n'
+        "# But IF YOUR SYSTEM ARE USING SYSTEMD (Debian Jessie and newer use it!)," + '\n'
+        "# the first line will be ignored. You can use '# systemctl disable htpdate'" + '\n'
+        "# to disable htpdate on boot and '# systemctl enable htpdate' to reenable it." + '\n'
+        '# HTP_DAEMON=no' + '\n'
+        '# HTP_IFUP=no' + '\n'
+        '\n'
+        "# If you have a HTTP proxy, uncomment the following line and change the" + '\n'
+        "# values." + '\n'
+        '# HTP_PROXY="-P myproxy-xyz.com:8080"' + '\n'
+        '\n'
+        "# In the next line you should put HTTP servers. Note that htpdate uses" + '\n'
+        "# the timestamps extracted from headers to synchronize the time. You" + '\n'
+        "# must to use reliable servers only. Remember: you can use any site, not" + '\n'
+        "# specifics NTP site only." + '\n'
+        'HTP_SERVERS="www.kernel.org www.ntp.org www.wikipedia.org"' + '\n'
+        '\n'
+        "# The general options can be viewed with '$ htpdate -h'. However, you can" + '\n'
+        "# keep the current options, that works fine." + '\n'
+        'HTP_OPTIONS="-D -s"')
 
-    htpdate_default = ("# This file is used to configure htpdate daemon. Most users needn't change" + '\n'
-            "# anything here." + '\n'
-            '\n'
-            "# htpdate will run on system boot as daemon and at every network restart" + '\n'
-            "# (IF UP). However you can disable each one uncommenting the following lines." + '\n'
-            "# But IF YOUR SYSTEM ARE USING SYSTEMD (Debian Jessie and newer use it!)," + '\n'
-            "# the first line will be ignored. You can use '# systemctl disable htpdate'" + '\n'
-            "# to disable htpdate on boot and '# systemctl enable htpdate' to reenable it." + '\n'
-            '# HTP_DAEMON=no' + '\n'
-            '# HTP_IFUP=no' + '\n'
-            '\n'
-            "# If you have a HTTP proxy, uncomment the following line and change the" + '\n'
-            "# values." + '\n'
-            '# HTP_PROXY="-P myproxy-xyz.com:8080"' + '\n'
-            '\n'
-            "# In the next line you should put HTTP servers. Note that htpdate uses" + '\n'
-            "# the timestamps extracted from headers to synchronize the time. You" + '\n'
-            "# must to use reliable servers only. Remember: you can use any site, not" + '\n'
-            "# specifics NTP site only." + '\n'
-            'HTP_SERVERS="www.kernel.org www.ntp.org www.wikipedia.org"' + '\n'
-            '\n'
-            "# The general options can be viewed with '$ htpdate -h'. However, you can" + '\n'
-            "# keep the current options, that works fine." + '\n'
-            'HTP_OPTIONS="-D -s"')
+def pre_build():
 
     aur_pre_build()
     run_cmd(['sh', '-c', 'sed \'/^$/d\' -i htpdate.service'])
@@ -57,9 +57,8 @@ def pre_build():
     # Write the contents of the htpdate_default variable
     # to the htpdate.default file
 
-    htpdate_default_file = open('htpdate.default','w')
-    print(htpdate_default, file = htpdate_default_file)
-    htpdate_default_file.close
+    with open('htpdate.default', 'w') as htpdate_default_file:
+        print(htpdate_default, file = htpdate_default_file)
 
     for line in edit_file('PKGBUILD'):
         if line.startswith('pkgdesc='):
