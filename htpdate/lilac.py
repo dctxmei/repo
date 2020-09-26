@@ -4,7 +4,7 @@ from lilaclib import *
 
 def pre_build():
     aur_pre_build()
-    run_cmd(['sed \'/^$/d\' -i htpdate.service'])
+    run_cmd(['sh', '-c', 'sed \'/^$/d\' -i htpdate.service'])
     for line in edit_file('htpdate.service'):
         if line.startswith('Description='):
             line = "Description=HTTP based time synchronization tool"
