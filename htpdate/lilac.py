@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from lilaclib import *
+
 htpdate_default = ("# This file is used to configure htpdate daemon. Most users needn't change" + '\n'
         "# anything here." + '\n'
         '\n'
@@ -25,8 +27,6 @@ htpdate_default = ("# This file is used to configure htpdate daemon. Most users 
         "# keep the current options, that works fine." + '\n'
         'HTP_OPTIONS="-D -s"')
 
-from lilaclib import *
-
 def pre_build():
     aur_pre_build()
     run_cmd(['sh', '-c', 'sed \'/^$/d\' -i htpdate.service'])
@@ -39,13 +39,13 @@ def pre_build():
             line = line + '\n' + 'After=network.target nss-lookup.target'
         elif line.endswith('[Service]'):
             line = '\n' + line
+        elif line.startswith('PIDFile='):
+            line = line + '\n' + 'EnvironmentFile=/etc/default/htpdate'
         elif line.startswith('ExecStart='):
-            line = 'EnvironmentFile=/etc/default/htpdate' + '\n' + line
-        if line.startswith('ExecStart='):
             line = ('ExecStart=/usr/bin/htpdate $HTP_OPTIONS $HTP_PROXY'
                     ' '
                     '-i /run/htpdate.pid $HTP_SERVERS')
-        if line.startswith('ExecStart='):
+        elif 'ExecStart=' in line:
             line = (line + '\n'
                     '# Security #' + '\n'
                     'InaccessibleDirectories='
