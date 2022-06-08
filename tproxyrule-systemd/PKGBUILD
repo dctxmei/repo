@@ -1,14 +1,17 @@
-# Maintainer: Dct Mei <dctxmei@gmail.com>
+# Maintainer: Dct Mei <dctxmei@yandex.com>
 
 pkgname=tproxyrule-systemd
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Set system services about TPROXY policy routing"
 arch=('any')
 depends=('iproute2' 'systemd')
-source=("tproxyrule.service")
-sha512sums=('25007b6be88a6fd1ed09f2f2a36a04858839ab595abff8add8e9c081e9b356e9770395395311f51d4f2ff3e879a8126a1de35f2913ed60e233386f2954a547d2')
+source=("tproxyrule"
+        "tproxyrule.service")
+sha256sums=('8498a19b090f24fef4f2d4afa9a74babe8bb366728ea56a50fd9b0e698fffc59'
+            '114a816fda3ea623b6766790c48f6e68c9c85723a73f78ecb422adf77fa99564')
 
 package() {
-    install -Dm644 "$srcdir"/tproxyrule.service "$pkgdir"/usr/lib/systemd/system/tproxyrule.service
+    install -Dm 755 "${srcdir}"/tproxyrule -t "${pkgdir}"/usr/lib/
+    install -Dm 644 "${srcdir}"/tproxyrule.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
