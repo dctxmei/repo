@@ -3,7 +3,7 @@ Description=TPROXY Rule
 After=network.target network-online.target
 
 [Service]
-ExecStart=/usr/lib/tproxy-rule
+ExecStart=/usr/lib/tproxyrule
 Type=oneshot
 
 [Install]
