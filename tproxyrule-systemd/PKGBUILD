@@ -2,13 +2,13 @@
 
 pkgname=tproxyrule-systemd
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Set system services about TPROXY policy routing"
 arch=('any')
 depends=('iproute2' 'systemd')
 source=("tproxyrule"
         "tproxyrule.service")
-sha256sums=('8498a19b090f24fef4f2d4afa9a74babe8bb366728ea56a50fd9b0e698fffc59'
+sha256sums=('a18682305a3442504bc78bf6469fb1f627ddc9e0d8a854af2bb99a3eb677f11b'
             '13085f595e972f2e24473344c158fab7e0a4ac7ea9890651b552262d3b192446')
 
 package() {

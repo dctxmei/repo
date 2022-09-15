@@ -1,6 +1,7 @@
 #!/bin/bash
 
-/usr/bin/ip rule add fwmark 1 table 100
+# for "protocol kernel", see systemd/systemd#19106
+/usr/bin/ip rule add fwmark 1 table 100 protocol kernel
 /usr/bin/ip route add local 0.0.0.0/0 dev lo table 100
-/usr/bin/ip -6 rule add fwmark 1 table 100
+/usr/bin/ip -6 rule add fwmark 1 table 100 protocol kernel
 /usr/bin/ip -6 route add local ::/0 dev lo table 100
