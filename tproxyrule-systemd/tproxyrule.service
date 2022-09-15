@@ -1,6 +1,7 @@
 [Unit]
 Description=TPROXY Rule
-After=network.target network-online.target
+After=network.target nss-lookup.target nftables.service
+Wants=network.target
 
 [Service]
 ExecStart=/usr/lib/tproxyrule
